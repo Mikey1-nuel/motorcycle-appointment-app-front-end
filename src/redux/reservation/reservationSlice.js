@@ -1,22 +1,22 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const postReservation = createAsyncThunk(
-  'postReservation',
+  "postReservation",
   async (data) => {
-    const RESERVATION_URL = `http://localhost:3000/api/users/${data.user_id}/reservations`;
+    const RESERVATION_URL = `motorcycle-appointment-app-api/api/users/${data.user_id}/reservations`;
     const response = await axios.post(RESERVATION_URL, data);
     return response.data;
-  },
+  }
 );
 
 export const getReservations = createAsyncThunk(
-  'getReservations',
+  "getReservations",
   async (id) => {
-    const RESERVATION_URL = `http://localhost:3000/api/users/${id}/reservations`;
+    const RESERVATION_URL = `motorcycle-appointment-app-api/api/users/${id}/reservations`;
     const response = await axios.get(RESERVATION_URL, {
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
     const { data } = response;
@@ -29,19 +29,19 @@ export const getReservations = createAsyncThunk(
       status: reservation.status,
     }));
     return reservation;
-  },
+  }
 );
 
 const initialState = {
   reservation: [],
-  creationMsg: '',
+  creationMsg: "",
   loading: false,
-  error: '',
+  error: "",
   reservationsFetched: false,
 };
 
 const reservationSlice = createSlice({
-  name: 'reservation',
+  name: "reservation",
   initialState,
   reducers: {
     createMsgAction: (state, action) => {
@@ -51,7 +51,6 @@ const reservationSlice = createSlice({
     markReservationsAsFetched: (state) => {
       state.reservationsFetched = true;
     },
-
   },
   extraReducers: (builder) => {
     builder
@@ -61,7 +60,7 @@ const reservationSlice = createSlice({
       .addCase(postReservation.fulfilled, (state, action) => {
         state.reservation.push(action.payload);
         state.loading = false;
-        state.creationMsg = 'success';
+        state.creationMsg = "success";
       })
       .addCase(postReservation.rejected, (state, action) => ({
         ...state,
@@ -82,5 +81,6 @@ const reservationSlice = createSlice({
   },
 });
 
-export const { createMsgAction, markReservationsAsFetched } = reservationSlice.actions;
+export const { createMsgAction, markReservationsAsFetched } =
+  reservationSlice.actions;
 export default reservationSlice.reducer;

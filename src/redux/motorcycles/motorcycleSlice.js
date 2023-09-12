@@ -1,12 +1,15 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const getMotorcycles = createAsyncThunk('motorcycles', async () => {
-  const response = await fetch('http://localhost:3000/api/motorcycles', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+export const getMotorcycles = createAsyncThunk("motorcycles", async () => {
+  const response = await fetch(
+    "motorcycle-appointment-app-api/api/motorcycles",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 
   const responseData = await response.json();
   if (response.status < 200 || response.status >= 300) {
@@ -16,64 +19,67 @@ export const getMotorcycles = createAsyncThunk('motorcycles', async () => {
 });
 
 export const postMotorcycles = createAsyncThunk(
-  'postMotorcycles',
+  "postMotorcycles",
   async (data) => {
-    const response = await fetch('http://localhost:3000/api/motorcycles', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      "motorcycle-appointment-app-api/api/motorcycles",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
     const responseData = await response.json();
     if (response.status < 200 || response.status >= 300) {
       throw new Error(responseData.message);
     }
     return responseData;
-  },
+  }
 );
 export const deleteMotorcycle = createAsyncThunk(
-  'deleteMotorcycle',
+  "deleteMotorcycle",
   async (id) => {
     const response = await fetch(
-      `http://localhost:3000/api/motorcycles/${id}`,
+      `motorcycle-appointment-app-api/api/motorcycles/${id}`,
       {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-      },
+      }
     );
     const responseData = await response.json();
     if (response.status < 200 || response.status >= 300) {
       throw new Error(responseData.message);
     }
     return id;
-  },
+  }
 );
 const initialState = {
   user: {},
   motorcycles: [],
-  message: '',
+  message: "",
   loggedIn: false,
 };
 
 const MotorcycleSlice = createSlice({
-  name: 'motorcycles',
+  name: "motorcycles",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getMotorcycles.pending, (state) => {
-        state.message = 'loading';
+        state.message = "loading";
       })
       .addCase(getMotorcycles.fulfilled, (state, action) => {
         const responseData = action.payload;
         return {
           ...state,
           motorcycles: responseData,
-          message: 'success',
+          message: "success",
         };
       })
       .addCase(getMotorcycles.rejected, (state, action) => ({
@@ -86,7 +92,7 @@ const MotorcycleSlice = createSlice({
         return {
           ...state,
           motorcycles: [...state.motorcycles, responseData],
-          message: 'post success',
+          message: "post success",
         };
       })
       .addCase(postMotorcycles.rejected, (state, action) => ({
@@ -99,9 +105,9 @@ const MotorcycleSlice = createSlice({
         return {
           ...state,
           motorcycles: state.motorcycles.filter(
-            (motorcycle) => motorcycle.id !== id,
+            (motorcycle) => motorcycle.id !== id
           ),
-          message: 'delete success',
+          message: "delete success",
         };
       })
       .addCase(deleteMotorcycle.rejected, (state, action) => ({
