@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getMotorcycles = createAsyncThunk('motorcycles', async () => {
   const response = await fetch(
-    'motorcycle-appointment-app-api/api/motorcycles',
+    'https://motorcycle-appointment-app-api.onrender.com/api/motorcycles',
     {
       method: 'GET',
       headers: {
@@ -22,7 +22,7 @@ export const postMotorcycles = createAsyncThunk(
   'postMotorcycles',
   async (data) => {
     const response = await fetch(
-      'motorcycle-appointment-app-api/api/motorcycles',
+      'https://motorcycle-appointment-app-api.onrender.com/api/motorcycles',
       {
         method: 'POST',
         headers: {
@@ -43,7 +43,7 @@ export const deleteMotorcycle = createAsyncThunk(
   'deleteMotorcycle',
   async (id) => {
     const response = await fetch(
-      `motorcycle-appointment-app-api/api/motorcycles/${id}`,
+      `https://motorcycle-appointment-app-api.onrender.com/api/motorcycles/${id}`,
       {
         method: 'DELETE',
         headers: {
