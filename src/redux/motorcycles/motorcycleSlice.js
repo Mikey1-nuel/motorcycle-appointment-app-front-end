@@ -1,12 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getMotorcycles = createAsyncThunk('motorcycles', async () => {
-  const response = await fetch('http://localhost:3000/api/motorcycles', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
+  const response = await fetch(
+    'motorcycle-appointment-app-api/api/motorcycles',
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     },
-  });
+  );
 
   const responseData = await response.json();
   if (response.status < 200 || response.status >= 300) {
@@ -18,13 +21,16 @@ export const getMotorcycles = createAsyncThunk('motorcycles', async () => {
 export const postMotorcycles = createAsyncThunk(
   'postMotorcycles',
   async (data) => {
-    const response = await fetch('http://localhost:3000/api/motorcycles', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const response = await fetch(
+      'motorcycle-appointment-app-api/api/motorcycles',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
       },
-      body: JSON.stringify(data),
-    });
+    );
 
     const responseData = await response.json();
     if (response.status < 200 || response.status >= 300) {
@@ -37,7 +43,7 @@ export const deleteMotorcycle = createAsyncThunk(
   'deleteMotorcycle',
   async (id) => {
     const response = await fetch(
-      `http://localhost:3000/api/motorcycles/${id}`,
+      `motorcycle-appointment-app-api/api/motorcycles/${id}`,
       {
         method: 'DELETE',
         headers: {

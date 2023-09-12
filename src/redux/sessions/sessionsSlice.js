@@ -1,13 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const postRegister = createAsyncThunk('postRegister', async (data) => {
-  const response = await fetch(`http://localhost:3000/api/${data.endpoint}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+  const response = await fetch(
+    `motorcycle-appointment-app-api/api/${data.endpoint}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data.obj),
     },
-    body: JSON.stringify(data.obj),
-  });
+  );
 
   const responseData = await response.json();
   if (response.status < 200 || response.status >= 300) {
