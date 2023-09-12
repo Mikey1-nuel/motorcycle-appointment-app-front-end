@@ -7,6 +7,7 @@
   - [📄\[Project Documentation\] ](#project-documentation)
   - [Kanban Board](#kanban-board)
   - [🛠 Built With ](#built-with)
+  - [Live app](#live-demo)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Setup](#setup)
@@ -37,8 +38,8 @@ The main features of this website are:
 - Users can view list of Motorcycles.
 - Users can view details of a motorcycle.
 - Users can add/list motorcycles.
-- Logged in users can reserve motorcycles. 
-- Logged in users can view their reservations. 
+- Logged in users can reserve motorcycles.
+- Logged in users can view their reservations.
 
 ## Project Documentation 📄 <a name="project-documentation"></a>
 
@@ -47,14 +48,17 @@ The main features of this website are:
 ## Kanban Board <a name="kanban-board"></a>
 
 ### Kanban Board front-end [link](https://github.com/Bennyjoez/motorcycle-appointment-app-front-end/projects/1)
+
 ### Kanban Board back-end [link](https://github.com/Bennyjoez/motorcycle-appointment-app-backend/projects/1)
 
 ### Initial state of the Kanban Board:
+
 ![Front-end](src/images/front.png)
 
 ![Back-end](src/images/back.png)
 
 ### Final state of the Kanban Board:
+
 ![Front-end After](src/images/front-after.png)
 
 ![Back-end After](src/images/back-after.png)
@@ -63,12 +67,15 @@ The main features of this website are:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ## Built With 🛠️ <a name="built-with"></a>
 
 - Programming Languages: CSS
 - Frameworks: React, Redux.
 - Code Editor: VS Code.
+
+## Live Demo
+
+- [✨Motorcycle Appointment App](https://jolly-fenglisu-580d34.netlify.app/)
 
 ## Getting Started <a name="getting-started"></a>
 
@@ -134,6 +141,7 @@ To run tests, please run this command
 ```
 $ npm test
 ```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Authors <a name="authors"></a>
@@ -162,7 +170,6 @@ $ npm test
 - Twitter: [Twitterhandle](https://twitter.com/Mikey_nuel)
 - LinkedIn: [LinkedInhandle](https://www.linkedin.com/in/emmanuel-nwoye-5915141b8/)
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭Future Features <a name="future-features"></a>
@@ -182,7 +189,7 @@ Feel free to check the [issues page](https://github.com/Bennyjoez/motorcycle-app
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Show your support  <a name="️support"></a>
+## Show your support <a name="️support"></a>
 
 Give a ⭐️ if you like this project!
 
